@@ -86,4 +86,7 @@
         "valarray": "cpp",
         "2587,cpp": "c"
     },
+    "files.exclude": {
+        "**/*.exe": true
+    },
 }
