@@ -1,2 +1,11 @@
 # Ignore all .exe files in the project
 *.exe
+
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
