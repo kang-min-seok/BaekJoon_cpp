@@ -1,6 +1,3 @@
-# Ignore all .exe files in the project
-*.exe
-
 # Ignore all
 *
 
@@ -9,3 +6,6 @@
 
 # Unignore all dirs
 !*/
+
+# Ignore .exe
+*.exe
