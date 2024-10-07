@@ -84,7 +84,9 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "valarray": "cpp",
-        "2587,cpp": "c"
+        "2587,cpp": "c",
+        "hash_map": "cpp",
+        "optional": "cpp"
     },
     "files.exclude": {
         "**/*.exe": true
