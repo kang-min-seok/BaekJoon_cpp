@@ -13,12 +13,13 @@ void backtracking(vector<int> sequence, int num_goal, int value){
         return;
     } else {
         for(int i=1; i<=value; i++){
-            if(find(sequence.begin(), sequence.end(), i) == sequence.end()) { 
+            if(find(sequence.begin(), sequence.end(), i) == sequence.end() && i > sequence.back() ) { 
                 sequence.push_back(i);
                 backtracking(sequence, num_goal, value);
                 sequence.pop_back();
             }
         }
+        return;
     }
 }
 
@@ -37,37 +38,3 @@ int main() {
 
     return 0;
 }
-
-// #include <iostream>
-// #define MAX 9
-// using namespace std;
-
-// int n,m;
-// int arr[MAX] = {0,};
-// bool visited[MAX] = {0,};
-
-// void dfs(int cnt)
-// {
-//     if(cnt == m)
-//     {
-//         for(int i = 0; i < m; i++)
-//             cout << arr[i] << ' ';
-//         cout << '\n';
-//         return;
-//     }
-//     for(int i = 1; i <= n; i++)
-//     {
-//         if(!visited[i])
-//         {
-//             visited[i] = true;
-//             arr[cnt] = i;
-//             dfs(cnt+1);
-//             visited[i] = false;
-//         }
-//     }
-// }
-
-// int main() {
-//     cin >> n >> m;
-//     dfs(0);
-// }
