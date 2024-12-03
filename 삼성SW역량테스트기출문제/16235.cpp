@@ -1,14 +1,16 @@
+// 구현문제
+// deque를 써야한다는 점을 생각해냈어야하는 문제
 #include <iostream>
 #include <vector>
 #include <tuple>
 #include <deque>
-#include <algorithm>
+
 using namespace std;
 
-int board[11][11];
-int board_add[11][11] = {0};
+int board[13][13] = {0};
+int board_add[13][13] = {0};
 int board_size, tree_num, finish_year;
-deque<int> tree_info[11][11];
+deque<int> tree_info[13][13];
 
 void basic_input(){
     cin >> board_size >> tree_num >> finish_year;
@@ -25,7 +27,7 @@ void basic_input(){
     for(int i=0; i<tree_num; i++){
         int x,y,age;
         cin >> x >> y >> age;
-        tree_info[y][x].push_back(age);
+        tree_info[x][y].push_back(age);
     }
 }
 
@@ -42,14 +44,14 @@ void tree_tech(){
             deque<int> new_forest;
             int nutrients = board[i][j];
             for(auto &age:tree_info[i][j]){
-                if(age <= board[i][j]){
+                if(age <= nutrients){
                     nutrients -= age;
                     new_forest.push_back(age+1);
                 } else {
                     dead_tree.push_back(make_tuple(age,j,i));
                 }
             }
-
+            board[i][j] = nutrients;
             tree_info[i][j] = new_forest;
 
         }
@@ -68,7 +70,6 @@ void tree_tech(){
     // 가을
     for(int i=1; i<=board_size; i++){
         for(int j=1; j<=board_size; j++){
-            // if(tree_info[i][j].empty()) continue;
 
             for(auto &age: tree_info[i][j]){
                 if(age % 5 == 0){
