@@ -31,15 +31,18 @@ int modify_num(int a, int b, char c){
 }
 
 void backtracking(int start, int before_value){
+    if(start > numbers.size()-2) return;
+
     int bracket_num = modify_num(numbers[start], numbers[start+1], opers[start]);
     int next_value = modify_num(before_value, bracket_num, opers[start-1]);
 
-    if(start + 2 <= numbers.size() - 2){
-        backtracking(start+2, next_value);
-    }
-
-    for(int i=start+2; i<numbers.size()-1; i++){
+    
+    for(int i=start+2; i<numbers.size(); i++){
         // 이전 값과 여기서 뭉친값을 계산하고
+        if(i < numbers.size() - 1){
+            backtracking(i, next_value);
+        }
+
         next_value = modify_num(next_value, numbers[i], opers[i-1]);
     }
 
